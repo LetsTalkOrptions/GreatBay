@@ -108,13 +108,13 @@ function bid(itemsArr) {
         {
             type: 'list',
             name: 'choice',
-            message: 'Which Item Number would you like to bid on?',
+            message: 'Which Item number are you bidding on?',
             choices: itemsArr
         },
         {
             type: 'input',
             name: 'bid',
-            message: 'How much would you like to bid?'
+            message: 'What is your new bid?'
         }
     ]).then(function (response) {
         var bid = []
@@ -127,7 +127,7 @@ function bid(itemsArr) {
 }
 
 function updateBid(bid) {
-    console.log('Congrats!!!!\nYou are now the highest bidder at ' + bid[0] + '!')
+    console.log('Good News!\nYou are now the highest bidder at ' + bid[0] + '!')
     connection.query('update items set ? where ?',
         [
             {
@@ -149,7 +149,7 @@ function checkBid(bid) {
         if (bid[0] > highestBid) {
             updateBid(bid)
         } else {
-            console.log('Sorry your bid was too low!\nPlease try again!')
+            console.log('Sorry, someone outbid you.\nPlease bid higher if you would like.')
             start()
         }
     })
