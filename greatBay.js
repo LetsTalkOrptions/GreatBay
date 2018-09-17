@@ -10,7 +10,7 @@ var connection = mysql.createConnection({
     database: 'greatBayDB'
 })
 
-connection.connect(function (err) {
+connection.connect(function(err) {
     if (err) throw err
     start()
 })
@@ -23,7 +23,7 @@ function start() {
             message: 'Would you like to Post or Bid on an item?',
             choices: ['Post', 'Bid']
         }
-    ]).then(function (answers) {
+    ]).then(function(answers) {
         console.log('----- ' + answers.choice.toUpperCase() + ' -----')
         if (answers.choice === 'Post') {
             post()
@@ -57,7 +57,7 @@ function post() {
                 }
             }
         }
-    ]).then(function (response) {
+    ]).then(function(response) {
         var values = []
 
         values.push(response.itemName)
@@ -116,7 +116,7 @@ function bid(itemsArr) {
             name: 'bid',
             message: 'What is your new bid?'
         }
-    ]).then(function (response) {
+    ]).then(function(response) {
         var bid = []
 
         bid.push(response.bid)
